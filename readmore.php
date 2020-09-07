@@ -40,15 +40,14 @@
 		</div>
 		
 	</div>
-<?php } ?>
-<?php } else { header("Location:error.php"); }?>
+
 <div class="related template class">
 <?php
-
-         $query="SELECT *FROM tbl_post WHERE cat=$id";
-		   $post=$db->select($query);
-		   if($post) { 
-		   	while ($result=$post->fetch_assoc()) {
+           $catid=$result['cat'];
+           $query="SELECT *FROM tbl_post WHERE cat=$catid";
+		   $rlpost=$db->select($query);
+		   if($rlpost) { 
+		   	while ($result=$rlpost->fetch_assoc()) {
 		?>
 
 	<div class="div1">
@@ -56,7 +55,12 @@
 	<img src="admin/upload/<?php echo $result['image']; ?>" alt="post.img" >
 	</div>
 <?php } ?>
+
 <?php } ?>
+
+<?php } ?>
+
+<?php } else { header("Location:error.php"); }?>
 
 	</div>
 
